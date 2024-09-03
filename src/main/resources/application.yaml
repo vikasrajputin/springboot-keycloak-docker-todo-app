@@ -1,0 +1,25 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: todo-app-client
+            authorization-grant-type: authorization_code
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8081/realms/todo-app-realm
+            user-name-attribute: preferred_username
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/todo-app-realm
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3309/keycloak
+    username: keycloak
+    password: keycloakpassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
